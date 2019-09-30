@@ -15,10 +15,10 @@ class Bot:
         self.browserProfile = webdriver.ChromeOptions()
         self.browserProfile.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
         if(sys.platform == 'Win32' or 'Win64'):
-            self.browser = webdriver.Chrome(executable_path=r'C:\Users\jlind\Dropbox\Projects\gram\chromedriver.exe',
+            self.browser = webdriver.Chrome(executable_path=r'.\chromedriver.exe',
                                         options=self.browserProfile)
         else:
-            self.browser = webdriver.Chrome(executable_path=r'/Users/jakelindsey/Dropbox/Projects/gram/chromedriver',
+            self.browser = webdriver.Chrome(executable_path=r'./chromedriver',
                                             options=self.browserProfile)
         self.username = username
         self.password = password
@@ -180,7 +180,7 @@ def main():
     @telegramBot.message_handler(commands=["open"])
     def read(message):
         count = 0
-        with open("DATABASE.txt", "r") as f:
+        with open("SCRAPE.txt", "r") as f:
             while True:
                 link_list = f.readline().splitlines()
                 image_page = find_link(link_list)
